@@ -12,20 +12,42 @@
     },
     "location": {
       "type": "string",
-      "defaultValue": "eastus",
+      "defaultValue": "centralus",
       "allowedValues": [
+        "australiaeast",
+        "brazilsouth",
+        "canadacentral",
+        "centralus",
+        "eastasia",
         "eastus",
         "eastus2",
-        "southcentralus",
+        "francecentral",
+        "japaneast",
+        "koreacentral",
+        "northcentralus",
+        "northeurope",
         "southeastasia",
+        "southcentralus",
+        "uksouth",
         "westcentralus",
-        "westeurope",
+        "westus",
         "westus2",
-        "centralus"
+        "westeurope"
       ],
       "metadata": {
         "description": "Specifies the location for all resources."
       }
+    },
+    "sku":{
+      "type": "string",
+      "defaultValue": "enterprise",
+        "allowedValues": [
+          "basic",
+          "enterprise"
+        ],
+        "metadata": {
+          "description": "Specifies the sku, also referred as 'edition' of the Azure Machine Learning workspace."
+        }
     },
     "workspace": {
       "type": "string"
@@ -130,6 +152,10 @@
       ],
       "identity": {
         "type": "systemAssigned"
+      },
+      "sku": {
+        "tier": "[parameters('sku')]",
+        "name": "[parameters('sku')]"
       },
       "properties": {
         "friendlyName": "[variables('amlWorkspaceName')]",
